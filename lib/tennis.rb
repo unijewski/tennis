@@ -6,6 +6,10 @@ class Tennis
   end
 
   def score
+    if @player_one = 'wins'
+      return 'player 1 wins'
+    end
+
     return "#{@player_one} - #{@player_two}"
   end
 
@@ -23,6 +27,8 @@ class Tennis
       30
     when 30
       40
+    when 40
+      'wins'
     end
   end
 

@@ -21,11 +21,11 @@ describe "Tennis" do
     expect(@tennis.score).to eq "30 - 0"
   end
 
-  it "the score is 40-0" do
+  it "player one wins, the score is 40-0" do
     @tennis.point_for(1)
     @tennis.point_for(1)
     @tennis.point_for(1)
-    expect(@tennis.score).to eq "40 - 0"
+    expect(@tennis.score).to eq "player 1 wins"
   end
   
 end
