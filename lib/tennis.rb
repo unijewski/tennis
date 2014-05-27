@@ -21,6 +21,8 @@ class Tennis
       15
     when 15
       30
+    when 30
+      40
     end
   end
 
