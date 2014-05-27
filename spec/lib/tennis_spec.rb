@@ -9,5 +9,10 @@ describe "Tennis" do
   it "the score is 0-0" do
     expect(@tennis.score).to eq "0 - 0"
   end
+
+  it "the score is 15-0" do
+    @tennis.point_for(1)
+    expect(@tennis.score).to eq "15 - 0"
+  end
   
 end
