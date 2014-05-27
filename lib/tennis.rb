@@ -19,6 +19,8 @@ class Tennis
     case current_score
     when 0
       15
+    when 15
+      30
     end
   end
 
