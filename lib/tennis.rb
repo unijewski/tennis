@@ -30,6 +30,10 @@ class Tennis
       return 'player 1 wins in deuce'
     end
 
+    if @player_two == 'wins in deuce'
+      return 'player 2 wins in deuce'
+    end
+
     return "#{@player_one} - #{@player_two}"
   end
 
@@ -99,6 +103,10 @@ class Tennis
     if player_id == 1
       if @player_one == 'advantage in'
         @player_one = 'wins in deuce'
+      end
+    else
+      if @player_two == 'advantage in'
+        @player_two = 'wins in deuce'
       end
     end
   end
