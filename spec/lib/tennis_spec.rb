@@ -71,5 +71,15 @@ describe "Tennis" do
     @tennis.point_for(2)
     expect(@tennis.score).to eq "40 - 30"
   end
+
+  it "deuce, 40-40" do
+    @tennis.point_for(1)
+    @tennis.point_for(1)
+    @tennis.point_for(1)
+    @tennis.point_for(2)
+    @tennis.point_for(2)
+    @tennis.point_for(2)
+    expect(@tennis.score).to eq "deuce"
+  end
   
 end

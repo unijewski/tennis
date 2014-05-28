@@ -14,6 +14,10 @@ class Tennis
       return 'player 2 wins'
     end
 
+    if deuce?
+      return 'deuce'
+    end
+
     return "#{@player_one} - #{@player_two}"
   end
 
@@ -22,6 +26,11 @@ class Tennis
       @player_one = increase_score(@player_one)
     elsif player_id == 2
       @player_two = increase_score(@player_two)
+    end
+
+    if @player_one == 40 && @player_two == 40
+      @player_one = 'deuce'
+      @player_two = 'deuce'
     end
   end
 
@@ -36,6 +45,14 @@ class Tennis
     when 40
       'wins'
     end
+  end
+
+  def deuce?
+    if @player_one == 'deuce' && @player_two == 'deuce'
+      return true
+    end
+
+    return false
   end
 
 end
