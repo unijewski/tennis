@@ -22,6 +22,10 @@ class Tennis
       return 'player 1 has an advantage'
     end
 
+    if @player_two == 'advantage in'
+      return 'player 2 has an advantage'
+    end
+
     if @player_one == 'wins in deuce'
       return 'player 1 wins in deuce'
     end
@@ -75,10 +79,11 @@ class Tennis
 
   def deuce_rule(player_id)
     if player_id == 1
-      if @player_one == 'deuce'
-        @player_one = 'advantage in'
-        @player_two = 'advantage out'
-      end
+      @player_one = 'advantage in'
+      @player_two = 'advantage out'
+    else
+      @player_one = 'advantage out'
+      @player_two = 'advantage in'
     end
   end
 
