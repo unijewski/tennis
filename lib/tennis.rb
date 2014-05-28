@@ -21,13 +21,19 @@ class Tennis
     if @player_one == 'advantage in'
       return 'player 1 has an advantage'
     end
-    
+
+    if @player_one == 'wins in deuce'
+      return 'player 1 wins in deuce'
+    end
+
     return "#{@player_one} - #{@player_two}"
   end
 
   def point_for(player_id)
     if deuce?
       deuce_rule(player_id)
+    elsif advantage?
+      advantage_rule(player_id)
     else
       classic_rule(player_id)
     end
@@ -72,6 +78,22 @@ class Tennis
       if @player_one == 'deuce'
         @player_one = 'advantage in'
         @player_two = 'advantage out'
+      end
+    end
+  end
+
+  def advantage?
+    if @player_one == 'advantage in' || @player_two == 'advantage in'
+      return true
+    end
+
+    return false    
+  end
+
+  def advantage_rule(player_id)
+    if player_id == 1
+      if @player_one == 'advantage in'
+        @player_one = 'wins in deuce'
       end
     end
   end
