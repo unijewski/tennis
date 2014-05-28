@@ -103,10 +103,16 @@ class Tennis
     if player_id == 1
       if @player_one == 'advantage in'
         @player_one = 'wins in deuce'
+      elsif @player_one == 'advantage out'
+        @player_one = 'deuce'
+        @player_two = 'deuce'
       end
     else
       if @player_two == 'advantage in'
         @player_two = 'wins in deuce'
+      elsif @player_two == 'advantage out'
+        @player_one = 'deuce'
+        @player_two = 'deuce'
       end
     end
   end
