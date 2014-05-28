@@ -81,5 +81,16 @@ describe "Tennis" do
     @tennis.point_for(2)
     expect(@tennis.score).to eq "deuce"
   end
+
+  it "player 1 has an advantage" do
+    @tennis.point_for(1)
+    @tennis.point_for(1)
+    @tennis.point_for(1)
+    @tennis.point_for(2)
+    @tennis.point_for(2)
+    @tennis.point_for(2)
+    @tennis.point_for(1)
+    expect(@tennis.score).to eq "player 1 has an advantage"
+  end
   
 end
