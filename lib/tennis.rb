@@ -6,11 +6,11 @@ class Tennis
   end
 
   def score
-    if @player_one == 'wins'
+    if @player_one == :wins
       return 'player 1 wins'
     end
 
-    if @player_two == 'wins'
+    if @player_two == :wins
       return 'player 2 wins'
     end
 
@@ -18,23 +18,23 @@ class Tennis
       return 'deuce'
     end
 
-    if @player_one == 'advantage in'
+    if @player_one == :advantage_in
       return 'player 1 has an advantage'
     end
 
-    if @player_two == 'advantage in'
+    if @player_two == :advantage_in
       return 'player 2 has an advantage'
     end
 
-    if @player_one == 'wins in deuce'
+    if @player_one == :wins_in_deuce
       return 'player 1 wins in deuce'
     end
 
-    if @player_two == 'wins in deuce'
+    if @player_two == :wins_in_deuce
       return 'player 2 wins in deuce'
     end
 
-    return "#{@player_one} - #{@player_two}"
+    "#{@player_one} - #{@player_two}"
   end
 
   def point_for(player_id)
@@ -56,16 +56,12 @@ class Tennis
     when 30
       40
     when 40
-      'wins'
+      :wins
     end
   end
 
   def deuce?
-    if @player_one == 'deuce' && @player_two == 'deuce'
-      return true
-    end
-
-    return false
+    @player_one == :deuce && @player_two == :deuce
   end
 
   def classic_rule(player_id)
@@ -76,43 +72,39 @@ class Tennis
     end
 
     if @player_one == 40 && @player_two == 40
-      @player_one = 'deuce'
-      @player_two = 'deuce'
+      @player_one = :deuce
+      @player_two = :deuce
     end
   end
 
   def deuce_rule(player_id)
     if player_id == 1
-      @player_one = 'advantage in'
-      @player_two = 'advantage out'
+      @player_one = :advantage_in
+      @player_two = :advantage_out
     else
-      @player_one = 'advantage out'
-      @player_two = 'advantage in'
+      @player_one = :advantage_out
+      @player_two = :advantage_in
     end
   end
 
   def advantage?
-    if @player_one == 'advantage in' || @player_two == 'advantage in'
-      return true
-    end
-
-    return false    
+    @player_one == :advantage_in || @player_two == :advantage_in
   end
 
   def advantage_rule(player_id)
     if player_id == 1
-      if @player_one == 'advantage in'
-        @player_one = 'wins in deuce'
-      elsif @player_one == 'advantage out'
-        @player_one = 'deuce'
-        @player_two = 'deuce'
+      if @player_one == :advantage_in
+        @player_one = :wins_in_deuce
+      elsif @player_one ==  :advantage_out
+        @player_one = :deuce
+        @player_two = :deuce
       end
     else
-      if @player_two == 'advantage in'
-        @player_two = 'wins in deuce'
-      elsif @player_two == 'advantage out'
-        @player_one = 'deuce'
-        @player_two = 'deuce'
+      if @player_two == :advantage_in
+        @player_two = :wins_in_deuce
+      elsif @player_two ==  :advantage_out
+        @player_one = :deuce
+        @player_two = :deuce
       end
     end
   end
